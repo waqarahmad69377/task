@@ -17,6 +17,7 @@ $(document).ready(function(){
                 var results = " <div class='project-col'><div class='project-card'><div class='title'><a href="+res.data[i].link+"><h2>"+res.data[i].title+"</h2></a></div><div class='button'><a href="+res.data[i].link+"><button>Read more</button></a></div></div></div>";
                 $('#projects').append(results);
             }
+            console.log(res);
         },
         error:function(res){
             console.log(res);
@@ -25,7 +26,7 @@ $(document).ready(function(){
     var timeRuns = 0;
    var setTime =  setInterval(function(){
         timeRuns+=1;
-        console.log(timeRuns);
+        // console.log(timeRuns);
         if(timeRuns <= 5){
             $.ajax({
                 methods:'GET',

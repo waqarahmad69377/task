@@ -299,3 +299,137 @@ function get_quotes()
 }
 add_action('wp_ajax_nopriv_get_quotes', 'get_quotes');
 add_action('wp_ajax_get_quotes', 'get_quotes');
+
+function cptui_register_my_cpts()
+{
+
+	/**
+	 * Post Type: Projects.
+	 */
+
+	$labels = [
+		"name" => esc_html__("Projects", "hello-elementor"),
+		"singular_name" => esc_html__("Project", "hello-elementor"),
+		"menu_name" => esc_html__("Projects", "hello-elementor"),
+		"all_items" => esc_html__("All Projects", "hello-elementor"),
+		"add_new" => esc_html__("Add New", "hello-elementor"),
+		"add_new_item" => esc_html__("Add New Project", "hello-elementor"),
+		"edit_item" => esc_html__("Edit Project", "hello-elementor"),
+		"new_item" => esc_html__("New Project", "hello-elementor"),
+		"view_item" => esc_html__("View Project", "hello-elementor"),
+		"view_items" => esc_html__("View Projects", "hello-elementor"),
+		"search_items" => esc_html__("Search Projects", "hello-elementor"),
+		"not_found" => esc_html__("No Projects Found", "hello-elementor"),
+		"not_found_in_trash" => esc_html__("No Projects Found in Trash", "hello-elementor"),
+		"parent" => esc_html__("Parent Project", "hello-elementor"),
+		"featured_image" => esc_html__("Featured image for this project", "hello-elementor"),
+		"set_featured_image" => esc_html__("Set Featured image for this project", "hello-elementor"),
+		"remove_featured_image" => esc_html__("Remove Featured image for this project", "hello-elementor"),
+		"use_featured_image" => esc_html__("Use as featured image for this project", "hello-elementor"),
+		"archives" => esc_html__("Project Archives", "hello-elementor"),
+		"insert_into_item" => esc_html__("Insert into project", "hello-elementor"),
+		"uploaded_to_this_item" => esc_html__("Uploaded to this project", "hello-elementor"),
+		"filter_items_list" => esc_html__("Filter projects list", "hello-elementor"),
+		"items_list_navigation" => esc_html__("Project list navigation", "hello-elementor"),
+		"items_list" => esc_html__("Projects list", "hello-elementor"),
+		"attributes" => esc_html__("Project Attributes", "hello-elementor"),
+		"name_admin_bar" => esc_html__("Project", "hello-elementor"),
+		"item_published" => esc_html__("Project Published", "hello-elementor"),
+		"item_published_privately" => esc_html__("Project Published Privately", "hello-elementor"),
+		"item_reverted_to_draft" => esc_html__("Project reverted to draft", "hello-elementor"),
+		"item_scheduled" => esc_html__("Project Scheduled", "hello-elementor"),
+		"item_updated" => esc_html__("Project Updated", "hello-elementor"),
+		"parent_item_colon" => esc_html__("Parent Project", "hello-elementor"),
+	];
+
+	$args = [
+		"label" => esc_html__("Projects", "hello-elementor"),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"rest_namespace" => "wp/v2",
+		"has_archive" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => true,
+		"can_export" => true,
+		"rewrite" => ["slug" => "projects", "with_front" => true],
+		"query_var" => true,
+		"menu_position" => 9,
+		"menu_icon" => "dashicons-image-filter",
+		"supports" => ["title", "editor", "thumbnail", "excerpt", "custom-fields", "comments", "revisions", "author", "page-attributes", "post-formats"],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type("projects", $args);
+}
+
+add_action('init', 'cptui_register_my_cpts');
+
+function cptui_register_my_taxes()
+{
+
+	/**
+	 * Taxonomy: Projects Type.
+	 */
+
+	$labels = [
+		"name" => esc_html__("Projects Type", "hello-elementor"),
+		"singular_name" => esc_html__("Project Type", "hello-elementor"),
+		"menu_name" => esc_html__("Project Type", "hello-elementor"),
+		"all_items" => esc_html__("All Project Type", "hello-elementor"),
+		"edit_item" => esc_html__("Edit Project Type", "hello-elementor"),
+		"view_item" => esc_html__("View Project Type", "hello-elementor"),
+		"update_item" => esc_html__("Update Project Type", "hello-elementor"),
+		"add_new_item" => esc_html__("Add Project Type", "hello-elementor"),
+		"new_item_name" => esc_html__("New Project Type Name", "hello-elementor"),
+		"parent_item" => esc_html__("Parent Project Type", "hello-elementor"),
+		"parent_item_colon" => esc_html__("Parent Project Type:", "hello-elementor"),
+		"search_items" => esc_html__("Search Project Type", "hello-elementor"),
+		"popular_items" => esc_html__("Popular Projects Type", "hello-elementor"),
+		"separate_items_with_commas" => esc_html__("Separate Project Type with commas", "hello-elementor"),
+		"add_or_remove_items" => esc_html__("Add or Remove Projects Type", "hello-elementor"),
+		"choose_from_most_used" => esc_html__("Choose from the most used Project Type", "hello-elementor"),
+		"not_found" => esc_html__("No Project Type Found", "hello-elementor"),
+		"no_terms" => esc_html__("No Project Type", "hello-elementor"),
+		"items_list_navigation" => esc_html__("Projects Type List Navigation", "hello-elementor"),
+		"items_list" => esc_html__("Projects Type List", "hello-elementor"),
+		"back_to_items" => esc_html__("Back to project type", "hello-elementor"),
+		"name_field_description" => esc_html__("Project Type Description", "hello-elementor"),
+		"parent_field_description" => esc_html__("Project Type Parent Description", "hello-elementor"),
+	];
+
+
+	$args = [
+		"label" => esc_html__("Projects Type", "hello-elementor"),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => ['slug' => 'project_type', 'with_front' => true,  'hierarchical' => true,],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"show_tagcloud" => true,
+		"rest_base" => "project_type",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => true,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy("project_type", ["projects"], $args);
+}
+add_action('init', 'cptui_register_my_taxes');
