@@ -277,3 +277,25 @@ function ajax_projects()
 }
 add_action('wp_ajax_nopriv_ajax_projects', 'ajax_projects');
 add_action('wp_ajax_ajax_projects', 'ajax_projects');
+
+
+add_action('rest_api_init', function () {
+	register_rest_route('cup_of_coffee/v1', '/link', array(
+		'methods' => 'GET',
+		'callback' => 'hs_give_me_coffee'
+	));
+});
+
+function  hs_give_me_coffee()
+{
+	return json_encode(array("status" => "ok", "data" => array("coffee-link" => "https://bmc.link/waqarahmadB")));
+}
+
+function get_quotes()
+{
+	$get_response = wp_remote_get("https://api.kanye.rest/");
+	echo json_encode(array($get_response));
+	wp_die();
+}
+add_action('wp_ajax_nopriv_get_quotes', 'get_quotes');
+add_action('wp_ajax_get_quotes', 'get_quotes');

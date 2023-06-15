@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Template Name: Projects 
+ *  Template Name: Quotes 
  * 
  * @package HelloElementor
  * 
@@ -48,7 +48,7 @@ get_header();
 <div class="site-main" id="content">
 
     <div class="project-container">
-        <div class="project-row" id="projects">
+        <div class="project-row" id="quotes">
 
 
         </div>
